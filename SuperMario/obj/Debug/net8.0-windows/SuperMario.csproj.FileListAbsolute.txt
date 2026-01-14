@@ -15,3 +15,21 @@ C:\Users\sandr\OneDrive\Desktop\Nuova cartella\SuperMario\obj\Debug\net8.0-windo
 C:\Users\sandr\OneDrive\Desktop\Nuova cartella\SuperMario\obj\Debug\net8.0-windows\SuperMario.pdb
 C:\Users\sandr\OneDrive\Desktop\Nuova cartella\SuperMario\obj\Debug\net8.0-windows\SuperMario.genruntimeconfig.cache
 C:\Users\sandr\OneDrive\Desktop\Nuova cartella\SuperMario\obj\Debug\net8.0-windows\ref\SuperMario.dll
+C:\Users\multa\source\repos\SuperMario\SuperMario\bin\Debug\net8.0-windows\SuperMario.exe
+C:\Users\multa\source\repos\SuperMario\SuperMario\bin\Debug\net8.0-windows\SuperMario.deps.json
+C:\Users\multa\source\repos\SuperMario\SuperMario\bin\Debug\net8.0-windows\SuperMario.runtimeconfig.json
+C:\Users\multa\source\repos\SuperMario\SuperMario\bin\Debug\net8.0-windows\SuperMario.dll
+C:\Users\multa\source\repos\SuperMario\SuperMario\bin\Debug\net8.0-windows\SuperMario.pdb
+C:\Users\multa\source\repos\SuperMario\SuperMario\obj\Debug\net8.0-windows\SuperMario.frmGioco.resources
+C:\Users\multa\source\repos\SuperMario\SuperMario\obj\Debug\net8.0-windows\SuperMario.Properties.Resources.resources
+C:\Users\multa\source\repos\SuperMario\SuperMario\obj\Debug\net8.0-windows\SuperMario.csproj.GenerateResource.cache
+C:\Users\multa\source\repos\SuperMario\SuperMario\obj\Debug\net8.0-windows\SuperMario.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\multa\source\repos\SuperMario\SuperMario\obj\Debug\net8.0-windows\SuperMario.AssemblyInfoInputs.cache
+C:\Users\multa\source\repos\SuperMario\SuperMario\obj\Debug\net8.0-windows\SuperMario.AssemblyInfo.cs
+C:\Users\multa\source\repos\SuperMario\SuperMario\obj\Debug\net8.0-windows\SuperMario.csproj.CoreCompileInputs.cache
+C:\Users\multa\source\repos\SuperMario\SuperMario\obj\Debug\net8.0-windows\SuperMario.sourcelink.json
+C:\Users\multa\source\repos\SuperMario\SuperMario\obj\Debug\net8.0-windows\SuperMario.dll
+C:\Users\multa\source\repos\SuperMario\SuperMario\obj\Debug\net8.0-windows\refint\SuperMario.dll
+C:\Users\multa\source\repos\SuperMario\SuperMario\obj\Debug\net8.0-windows\SuperMario.pdb
+C:\Users\multa\source\repos\SuperMario\SuperMario\obj\Debug\net8.0-windows\SuperMario.genruntimeconfig.cache
+C:\Users\multa\source\repos\SuperMario\SuperMario\obj\Debug\net8.0-windows\ref\SuperMario.dll

@@ -4,8 +4,7 @@ namespace SuperMario
     {
         bool dirDestra = false;
         bool dirSinistra = false;
-
-        bool salto = false;
+        bool NatanIsAGoodBoy;
 
         //Velocita' di movimento
         int velocitaMuovi = 5;
@@ -14,6 +13,7 @@ namespace SuperMario
         public frmGioco()
         {
             InitializeComponent();
+            bool salto = true;
         }
              // c
         private void frmGioco_KeyDown(object sender, KeyEventArgs e)
@@ -39,10 +39,6 @@ namespace SuperMario
             }
 
             //Se premo spazio, inizio il salto
-            if (e.KeyCode == Keys.Space && salto == false)
-            {
-                salto = true;
-            }
         }
 
         private void frmGioco_KeyUp(object sender, KeyEventArgs e)
