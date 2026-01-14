@@ -5,7 +5,6 @@ namespace SuperMario
         bool dirDestra = false;
         bool dirSinistra = false;
         bool NatanIsAGoodBoy;
-        bool AnshIsAGay;
 
         //Velocita' di movimento
         int velocitaMuovi = 5;
