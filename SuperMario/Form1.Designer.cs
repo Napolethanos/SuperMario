@@ -44,10 +44,10 @@
             // 
             pbxSfondo.BackgroundImage = Properties.Resources.SuperMario_Background;
             pbxSfondo.Controls.Add(pbxPavimento);
+            pbxSfondo.Controls.Add(pbxPlayer);
             pbxSfondo.Location = new Point(0, 0);
             pbxSfondo.Name = "pbxSfondo";
             pbxSfondo.Size = new Size(3570, 490);
-            Controls.Add(pbxPlayer);
             pbxSfondo.SizeMode = PictureBoxSizeMode.CenterImage;
             pbxSfondo.TabIndex = 0;
             pbxSfondo.TabStop = false;
@@ -67,14 +67,16 @@
             // pbxPlayer
             // 
             pbxPlayer.BackColor = Color.Transparent;
+            pbxPlayer.BackgroundImageLayout = ImageLayout.None;
             pbxPlayer.Image = Properties.Resources.SuperMario_GuardaDestra;
-            pbxPlayer.Location = new Point(76, 418);
+            pbxPlayer.Location = new Point(70, 418);
             pbxPlayer.Margin = new Padding(0);
             pbxPlayer.Name = "pbxPlayer";
             pbxPlayer.Size = new Size(28, 26);
             pbxPlayer.SizeMode = PictureBoxSizeMode.AutoSize;
             pbxPlayer.TabIndex = 2;
             pbxPlayer.TabStop = false;
+            pbxPlayer.Tag = "player";
             // 
             // tmrGioco
             // 
@@ -87,7 +89,6 @@
             AutoScaleMode = AutoScaleMode.None;
             BackgroundImageLayout = ImageLayout.None;
             ClientSize = new Size(784, 484);
-            pbxSfondo.Controls.Add(pbxPlayer);
             Controls.Add(pbxSfondo);
             Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "frmGioco";
@@ -96,10 +97,10 @@
             KeyUp += frmGioco_KeyUp;
             ((System.ComponentModel.ISupportInitialize)pbxSfondo).EndInit();
             pbxSfondo.ResumeLayout(false);
+            pbxSfondo.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)pbxPavimento).EndInit();
             ((System.ComponentModel.ISupportInitialize)pbxPlayer).EndInit();
             ResumeLayout(false);
-            PerformLayout();
         }
 
         #endregion
