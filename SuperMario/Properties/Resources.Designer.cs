@@ -19,7 +19,7 @@ namespace SuperMario.Properties {
     // tramite uno strumento quale ResGen o Visual Studio.
     // Per aggiungere o rimuovere un membro, modificare il file con estensione ResX ed eseguire nuovamente ResGen
     // con l'opzione /str oppure ricompilare il progetto VS.
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "17.0.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "18.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     internal class Resources {
@@ -57,6 +57,16 @@ namespace SuperMario.Properties {
             }
             set {
                 resourceCulture = value;
+            }
+        }
+        
+        /// <summary>
+        ///   Cerca una risorsa localizzata di tipo System.Byte[].
+        /// </summary>
+        internal static byte[] SuperLuigi_GuardaDestra {
+            get {
+                object obj = ResourceManager.GetObject("SuperLuigi_GuardaDestra", resourceCulture);
+                return ((byte[])(obj));
             }
         }
         
@@ -116,6 +126,16 @@ namespace SuperMario.Properties {
         internal static System.Drawing.Bitmap SuperMario_Pavimento {
             get {
                 object obj = ResourceManager.GetObject("SuperMario_Pavimento", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Cerca una risorsa localizzata di tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap SuperMario_Salto {
+            get {
+                object obj = ResourceManager.GetObject("SuperMario_Salto", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

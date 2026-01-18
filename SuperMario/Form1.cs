@@ -1,102 +1,114 @@
 namespace SuperMario
 {
-    //10:30 17/01 -> sistemato movimento a destra e sinistra, aggiunto shift per correre
-    //TODO: aggiungere salto, pensare a cosa fare alla fine del livello (es.animazione automatica)
     public partial class frmGioco : Form
     {
+        // AGGIORNATO IL 18/01 19:30
+        // INTRODOTTO IL SALTO INVIAMO UN MESSAGIO DI CONFERMA SE TI VA BENE ALTRIMENTI TE LO CANCELLO E RIFACCIO COMMIT E PUSH
+        //TODO: UNA VOLTA AVER AGGIUNTO I BLOCCHI CONTROLLARE SE POSSO SALTARE
+        //+TODO(FACOLTATIVO PER IL MOMENTO): IMPLEMENTARE UN SALTO GRADUALE PER MARIO E CREARE UN MENU INZIALE PER SELEZIONARE IL PERSONAGGIO
         bool dirDestra = false;
         bool dirSinistra = false;
+        bool salto = false;
+        bool inAria = false;
 
-        //Velocita' di movimento
         int velocitaMuovi = 5;
+        int limiteSalto = 15;       // altezza del salto la modifichiamo in futuro boy
+        int velocitaGravita = 5;    // gravita
+        int saltoGraduale = 0;       // contatore salto serve per far scendere il bro in modo graduale pardendo ds 15 cioe da quanto puo saltare
+        string direzioneBase = "destra"; // sarebbe l'ultima direzzione cosi torno nell'immagine della relativa direzione
 
         public frmGioco()
         {
             InitializeComponent();
-            bool salto = true;
         }
 
         private void frmGioco_KeyDown(object sender, KeyEventArgs e)
         {
-            //Se preme shift, aumento la velocita' di movimento
-            if (e.KeyCode == Keys.ShiftKey)
-            {
-                velocitaMuovi = 10;
-            }
-           
-            //In base alla freccia premuta, imposto la direzione del movimento
+            // Shift per correre
+            if (e.KeyCode == Keys.ShiftKey) velocitaMuovi = 10;
+
             if (e.KeyCode == Keys.Right)
             {
                 pbxPlayer.Image = Properties.Resources.SuperMario_GuardaDestra;
-
                 dirDestra = true;
+                direzioneBase = "destra";
             }
             else if (e.KeyCode == Keys.Left)
             {
                 pbxPlayer.Image = Properties.Resources.SuperMario_GuardaSinistra;
-
                 dirSinistra = true;
+                direzioneBase = "sinistra";
+            }
+
+            if (e.KeyCode == Keys.Space && !inAria)
+            {
+                salto = true;
+                inAria = true;
+                saltoGraduale = limiteSalto;
+                pbxPlayer.Image = Properties.Resources.SuperMario_Salto;
             }
         }
 
         private void frmGioco_KeyUp(object sender, KeyEventArgs e)
         {
-            //Diminuisco la velocita' di movimento quando rilascio shift
-            if (e.KeyCode == Keys.ShiftKey)
-            {
-                velocitaMuovi = 5;
-            }
+            if (e.KeyCode == Keys.ShiftKey) velocitaMuovi = 5;
 
-            //In base alla freccia rilasciata, imposto la direzione del movimento
-            if (e.KeyCode == Keys.Right)
-            {
-                dirDestra = false;
-            }
-            else if (e.KeyCode == Keys.Left)
-            {
-                dirSinistra = false;
-            }
+            if (e.KeyCode == Keys.Right) dirDestra = false;
+            else if (e.KeyCode == Keys.Left) dirSinistra = false;
         }
 
         private void tmrGioco_Tick(object sender, EventArgs e)
         {
-            //Ottengo l'HitBox del giocatore (i due metodi sotto servono per convertire le coordinate locali in coordinate globali e viceversa)
             Rectangle HitBoxGiocatore = this.RectangleToClient(pbxPlayer.RectangleToScreen(pbxPlayer.ClientRectangle));
             int centroSchermo = this.ClientRectangle.Width / 2;
 
-            //Gestione del movimento del giocatore nella prima metà dello schermo
-
-            //Se guarda a destra può raggiungere solo il centro dello schermo
+            // Movimento orizzontale
             if (dirDestra && HitBoxGiocatore.Right <= centroSchermo)
-            {
-                pbxPlayer.Left += velocitaMuovi; 
-            }
-            //Se guarda a sinistra può raggiungere solo il bordo sinistro dello schermo (else if per evitare bidirezionamenti)
+                pbxPlayer.Left += velocitaMuovi;
             else if (dirSinistra && HitBoxGiocatore.Left > 0)
-            {
                 pbxPlayer.Left -= velocitaMuovi;
-            }
-
-            //Gestione del movimento dello sfondo
-
-            //Se guarda a destra e supera il centro dello schermo, muovo lo sfondo a sinistra
-            if(dirDestra && HitBoxGiocatore.Right > centroSchermo)
-            {
+            else if (dirDestra && HitBoxGiocatore.Right > centroSchermo)
                 SpostaElementi();
+
+            if (salto) //salto 
+            {
+                pbxPlayer.Top -= saltoGraduale;
+                saltoGraduale -= 1;
+                if (saltoGraduale <= 0) salto = false;
+            }
+            else if (pbxPlayer.Bottom < pbxPavimento.Top)
+            {
+                pbxPlayer.Top += velocitaGravita;
+
+                // torna immagine base mentre cade
+                if (!salto)
+                {
+                    pbxPlayer.Image = (direzioneBase == "destra") ? Properties.Resources.SuperMario_GuardaDestra : Properties.Resources.SuperMario_GuardaSinistra;
+                }
+            }
+            else
+            {
+                // giggy ha toccato il pavimento
+                inAria = false;
+                pbxPlayer.Top = pbxPavimento.Top - pbxPlayer.Height;
+
+                // ritorna immagine base(quella con cui aveva saltato)
+                pbxPlayer.Image = (direzioneBase == "destra") ? Properties.Resources.SuperMario_GuardaDestra : Properties.Resources.SuperMario_GuardaSinistra;
             }
         }
 
         private void SpostaElementi()
         {
-            // Sposto gli elementi di primo livello (es. pbxSfondo)
             foreach (Control x in this.Controls)
-                if (pbxSfondo.Right != this.Right && x.Tag == "sfondo" || x.Tag == "pavimento" || x.Tag == "blocco_speciale" || x.Tag == "blocco")
-                    x.Left -= velocitaMuovi;                            
-
-            // Se il player è figlio di pbxSfondo, compenso il suo Left locale
-            if (pbxPlayer.Parent == pbxSfondo)            
-                pbxPlayer.Left += velocitaMuovi;
-            
+            {
+                if ((x.Tag == "sfondo" || x.Tag == "pavimento" || x.Tag == "blocco_speciale" || x.Tag == "blocco")
+                    && pbxSfondo.Right != this.Right)
+                {
+                    x.Left -= velocitaMuovi;
+                }
+            }
+            if (pbxPlayer.Parent == pbxSfondo)
+                pbxPlayer.Left += velocitaMuovi; // Compensa se Mario è figlio dello sfondo
         }
     }
 }
