@@ -118,33 +118,40 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="SuperMario_BloccoSpeciale" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\SuperMario_BloccoSpeciale.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="SuperMario_GuardaSinistra" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\SuperMario_GuardaSinistra.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="SuperMario_Background" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\SuperMario_Background.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-    <comment>Sfondo di gioco</comment>
-  </data>
-  <data name="SuperMario_GuardaDestra" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\SuperMario_GuardaDestra.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="SuperMario_Mattone" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\SuperMario_Mattone.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="SuperMario_Pavimento" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\SuperMario_Pavimento.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-    <comment>Blocco del pavimento</comment>
-  </data>
-  <data name="transparent-removebg-preview" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\transparent-removebg-preview.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+    <comment>Blocco del pavimento DEF</comment>
   </data>
   <data name="SuperMario_Salto" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\SuperMario_Salto.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+    <comment>Mario salta a destra DEF</comment>
   </data>
   <data name="SuperLuigi_GuardaDestra" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\SuperLuigi_GuardaSinistra.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <comment>Luigi (futura implementazione</comment>
+  </data>
+  <data name="SuperMario_Background" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\SuperMario_Background2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+    <comment>Sfondo DEF</comment>
+  </data>
+  <data name="SuperMario_Mattone" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\SuperMario_Mattone1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+    <comment>Blocco mattone DEF</comment>
+  </data>
+  <data name="SuperMario_BloccoSpeciale" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\SuperMario_BloccoSpeciale4.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+    <comment>Blocco speciale DEF</comment>
+  </data>
+  <data name="SuperMario_GuardaDestra" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\SuperMario_GuardaDestra1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+    <comment>Mario guarda a destra DEF</comment>
+  </data>
+  <data name="SuperMario_GuardaSinistra" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\image (1).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+    <comment>Mario guarda a destra DEF</comment>
+  </data>
+  <data name="SuperMario_SaltoSinistra" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\SuperMario_SaltoSinistra1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+    <comment>Mario salta a sinistra DEF</comment>
   </data>
 </root>

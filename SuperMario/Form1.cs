@@ -2,12 +2,19 @@ namespace SuperMario
 {
     public partial class frmGioco : Form
     {
-        // AGGIORNATO IL 18/01 19:30
-        // INTRODOTTO IL SALTO INVIAMO UN MESSAGIO DI CONFERMA SE TI VA BENE ALTRIMENTI TE LO CANCELLO E RIFACCIO COMMIT E PUSH
+        //10:30 17/01 -> sistemato movimento a destra e sinistra, aggiunto shift per correre
+        //TODO: aggiungere salto, pensare a cosa fare alla fine del livello (es.animazione automatica)
+
+        //19:30 18/01 -> INTRODOTTO IL SALTO INVIAMO UN MESSAGIO DI CONFERMA SE TI VA BENE ALTRIMENTI TE LO CANCELLO E RIFACCIO COMMIT E PUSH
+
+        //21:23 21/01 -> aggiornamento del salto e vari fix visivi con aggiunta di grafiche migliorative
+
         //TODO: UNA VOLTA AVER AGGIUNTO I BLOCCHI CONTROLLARE SE POSSO SALTARE
         //+TODO(FACOLTATIVO PER IL MOMENTO): IMPLEMENTARE UN SALTO GRADUALE PER MARIO E CREARE UN MENU INZIALE PER SELEZIONARE IL PERSONAGGIO
+
         bool dirDestra = false;
         bool dirSinistra = false;
+
         bool salto = false;
         bool inAria = false;
 
@@ -25,18 +32,27 @@ namespace SuperMario
         private void frmGioco_KeyDown(object sender, KeyEventArgs e)
         {
             // Shift per correre
-            if (e.KeyCode == Keys.ShiftKey) velocitaMuovi = 10;
+            if (e.KeyCode == Keys.ShiftKey && !inAria) velocitaMuovi = 10;
 
+            //Movimento orizzontale (else if per evitare conflitti)
             if (e.KeyCode == Keys.Right)
             {
-                pbxPlayer.Image = Properties.Resources.SuperMario_GuardaDestra;
+                if (!inAria)
+                    pbxPlayer.Image = Properties.Resources.SuperMario_GuardaDestra; //Immagine Mario che guarda a destra
+
+                dirSinistra = false;
                 dirDestra = true;
+
                 direzioneBase = "destra";
             }
             else if (e.KeyCode == Keys.Left)
             {
-                pbxPlayer.Image = Properties.Resources.SuperMario_GuardaSinistra;
+                if(!inAria)
+                    pbxPlayer.Image = Properties.Resources.SuperMario_GuardaSinistra; //Immagine Mario che guarda a sinistra
+
+                dirDestra = false;
                 dirSinistra = true;
+
                 direzioneBase = "sinistra";
             }
 
@@ -44,8 +60,10 @@ namespace SuperMario
             {
                 salto = true;
                 inAria = true;
+
                 saltoGraduale = limiteSalto;
-                pbxPlayer.Image = Properties.Resources.SuperMario_Salto;
+
+                pbxPlayer.Image = (direzioneBase == "destra") ? Properties.Resources.SuperMario_Salto : Properties.Resources.SuperMario_SaltoSinistra;
             }
         }
 
@@ -59,7 +77,9 @@ namespace SuperMario
 
         private void tmrGioco_Tick(object sender, EventArgs e)
         {
-            Rectangle HitBoxGiocatore = this.RectangleToClient(pbxPlayer.RectangleToScreen(pbxPlayer.ClientRectangle));
+            //Bounds del giocatore rispetto al form (pbxPlayer)
+            Rectangle HitBoxGiocatore = this.RectangleToClient(pbxPlayer.RectangleToScreen(pbxPlayer.ClientRectangle)); //RectangleToScreen calcola le coordinate assolute dello schermo, RectangleToClient le riporta relative al form
+
             int centroSchermo = this.ClientRectangle.Width / 2;
 
             // Movimento orizzontale
@@ -76,19 +96,15 @@ namespace SuperMario
                 saltoGraduale -= 1;
                 if (saltoGraduale <= 0) salto = false;
             }
-            else if (pbxPlayer.Bottom < pbxPavimento.Top)
+            else if (pbxPlayer.Bottom < pbxPavimento.Top) // salta solo dopo essere tornato a terra + controllo bug sottoterra
             {
-                pbxPlayer.Top += velocitaGravita;
-
-                // torna immagine base mentre cade
-                if (!salto)
-                {
-                    pbxPlayer.Image = (direzioneBase == "destra") ? Properties.Resources.SuperMario_GuardaDestra : Properties.Resources.SuperMario_GuardaSinistra;
-                }
-            }
+                pbxPlayer.Top += saltoGraduale;
+                saltoGraduale += 1;
+            }           
             else
             {
                 // giggy ha toccato il pavimento
+                velocitaMuovi = 5;
                 inAria = false;
                 pbxPlayer.Top = pbxPavimento.Top - pbxPlayer.Height;
 
@@ -99,14 +115,9 @@ namespace SuperMario
 
         private void SpostaElementi()
         {
-            foreach (Control x in this.Controls)
-            {
-                if ((x.Tag == "sfondo" || x.Tag == "pavimento" || x.Tag == "blocco_speciale" || x.Tag == "blocco")
-                    && pbxSfondo.Right != this.Right)
-                {
-                    x.Left -= velocitaMuovi;
-                }
-            }
+            foreach (Control x in this.Controls)            
+                if ((x.Tag == "sfondo" || x.Tag == "pavimento" || x.Tag == "blocco_speciale" || x.Tag == "blocco") && pbxSfondo.Right != this.Right)
+                    x.Left -= velocitaMuovi;            
             if (pbxPlayer.Parent == pbxSfondo)
                 pbxPlayer.Left += velocitaMuovi; // Compensa se Mario è figlio dello sfondo
         }

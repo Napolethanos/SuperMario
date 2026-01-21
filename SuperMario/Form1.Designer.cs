@@ -31,13 +31,15 @@
             components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmGioco));
             pbxSfondo = new PictureBox();
-            pbxPavimento = new PictureBox();
             pbxPlayer = new PictureBox();
+            pbxPavimento = new PictureBox();
+            pbxBloccoSpeciale = new PictureBox();
             tmrGioco = new System.Windows.Forms.Timer(components);
             ((System.ComponentModel.ISupportInitialize)pbxSfondo).BeginInit();
             pbxSfondo.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)pbxPavimento).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pbxPlayer).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pbxPavimento).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pbxBloccoSpeciale).BeginInit();
             SuspendLayout();
             // 
             // pbxSfondo
@@ -45,38 +47,50 @@
             pbxSfondo.BackgroundImage = Properties.Resources.SuperMario_Background;
             pbxSfondo.Controls.Add(pbxPavimento);
             pbxSfondo.Controls.Add(pbxPlayer);
+            pbxSfondo.Controls.Add(pbxBloccoSpeciale);
             pbxSfondo.Location = new Point(0, 0);
             pbxSfondo.Name = "pbxSfondo";
-            pbxSfondo.Size = new Size(3570, 490);
+            pbxSfondo.Size = new Size(3570, 390);
             pbxSfondo.SizeMode = PictureBoxSizeMode.CenterImage;
             pbxSfondo.TabIndex = 0;
             pbxSfondo.TabStop = false;
             pbxSfondo.Tag = "sfondo";
-            // 
-            // pbxPavimento
-            // 
-            pbxPavimento.BackColor = Color.Transparent;
-            pbxPavimento.BackgroundImage = Properties.Resources.SuperMario_Pavimento;
-            pbxPavimento.Location = new Point(0, 443);
-            pbxPavimento.Name = "pbxPavimento";
-            pbxPavimento.Size = new Size(3695, 48);
-            pbxPavimento.TabIndex = 1;
-            pbxPavimento.TabStop = false;
-            pbxPavimento.Tag = "pavimento";
             // 
             // pbxPlayer
             // 
             pbxPlayer.BackColor = Color.Transparent;
             pbxPlayer.BackgroundImageLayout = ImageLayout.None;
             pbxPlayer.Image = Properties.Resources.SuperMario_GuardaDestra;
-            pbxPlayer.Location = new Point(70, 418);
+            pbxPlayer.Location = new Point(77, 297);
             pbxPlayer.Margin = new Padding(0);
             pbxPlayer.Name = "pbxPlayer";
-            pbxPlayer.Size = new Size(28, 26);
+            pbxPlayer.Size = new Size(32, 29);
             pbxPlayer.SizeMode = PictureBoxSizeMode.AutoSize;
             pbxPlayer.TabIndex = 2;
             pbxPlayer.TabStop = false;
             pbxPlayer.Tag = "player";
+            // 
+            // pbxPavimento
+            // 
+            pbxPavimento.BackColor = Color.Transparent;
+            pbxPavimento.BackgroundImage = Properties.Resources.SuperMario_Pavimento;
+            pbxPavimento.Location = new Point(0, 326);
+            pbxPavimento.Name = "pbxPavimento";
+            pbxPavimento.Size = new Size(3695, 65);
+            pbxPavimento.TabIndex = 1;
+            pbxPavimento.TabStop = false;
+            pbxPavimento.Tag = "pavimento";
+            // 
+            // pbxBloccoSpeciale
+            // 
+            pbxBloccoSpeciale.BackColor = Color.Transparent;
+            pbxBloccoSpeciale.Image = Properties.Resources.SuperMario_BloccoSpeciale;
+            pbxBloccoSpeciale.Location = new Point(287, 217);
+            pbxBloccoSpeciale.Name = "pbxBloccoSpeciale";
+            pbxBloccoSpeciale.Size = new Size(32, 32);
+            pbxBloccoSpeciale.SizeMode = PictureBoxSizeMode.AutoSize;
+            pbxBloccoSpeciale.TabIndex = 1;
+            pbxBloccoSpeciale.TabStop = false;
             // 
             // tmrGioco
             // 
@@ -88,7 +102,7 @@
             // 
             AutoScaleMode = AutoScaleMode.None;
             BackgroundImageLayout = ImageLayout.None;
-            ClientSize = new Size(784, 484);
+            ClientSize = new Size(784, 391);
             Controls.Add(pbxSfondo);
             Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "frmGioco";
@@ -98,8 +112,9 @@
             ((System.ComponentModel.ISupportInitialize)pbxSfondo).EndInit();
             pbxSfondo.ResumeLayout(false);
             pbxSfondo.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)pbxPavimento).EndInit();
             ((System.ComponentModel.ISupportInitialize)pbxPlayer).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pbxPavimento).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pbxBloccoSpeciale).EndInit();
             ResumeLayout(false);
         }
 
@@ -109,5 +124,6 @@
         private PictureBox pbxPavimento;
         private PictureBox pbxPlayer;
         private System.Windows.Forms.Timer tmrGioco;
+        private PictureBox pbxBloccoSpeciale;
     }
 }
